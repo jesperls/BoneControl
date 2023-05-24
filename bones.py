@@ -95,7 +95,6 @@ def access():
                 noaccess = noaccess + semi_restricted_actions
         response = make_response(jsonify({'access': noaccess}), 200)
     response.mimetype = "application/json"
-    print(noaccess)
     return response
 
 # Try to connect to a socket just to check if the server is running
