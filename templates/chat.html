@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Skeleton Hub</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chatstyle.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='chatscript.js') }}"></script>
+        <link rel="icon" href="{{ url_for('static', filename='Arkana/Tarot.png') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body onload="startUp(), getMessages()">
+        <div id="chatWindow">
+            <div id="chatBox">
+                <div> Welcome to the chat! </div>
+                <div id="chat"></div>
+            </div>
+            <div id="chatInput">
+                <input type="text" id="chatInputBox" placeholder="Message...">
+                <div class="messageButton" onclick="sendMessage()">Send</div>
+                <div class="messageButton" onclick="showMessageBox(['Username'], true, setUsername, ['Set', 'Random'], true)">Change Name</div>
+            </div>
+        </div>
+        
+        <div class="messageBox">
+            <div >
+                <div class="messageText"></div>
+                <div class="messageText"></div>
+            </div>
+            <input id="messageInput" type="text"></input>
+            <iframe id="caveFrame"></iframe>
+            <div id="messageButtonContainer">
+                <div class="messageButton">YES</div>
+                <div class="messageButton", onclick="setRandom()">NO</div>
+            </div>
+        </div>
+    </body>
+</html>

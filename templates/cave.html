@@ -1,0 +1,5 @@
+<!doctype html><html><head><title>Colossal Cave Adventure</title><meta charset="UTF-8"> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Cave/style.css') }}"> <script type="text/javascript">function advent() {var a=document.getElementById('console');a.innerHTML="";try{var b=new Adventure(a);b.setup();b.start();}catch(c){a.appendChild(document.createTextNode("Whoops, an exception occurred while attempting to enter the cave: "+c));}}</script><style type="text/css">#console, #console input, noscript {font-family: "BitStream Vera Sans Mono", monospace;font-size: 10pt;white-space: pre;}</style></head><body
+ style="background-color:black; color:green;" onload="advent()"><div id="console">Initialising...</div><noscript>A LARGE BANNER BLOCKS THE WAY.  IT READS "JAVASCRIPT IS REQUIRED
+TO ENTER THE COLOSSAL CAVE.  PLEASE ENABLE JAVASCRIPT OR DOWNLOAD A
+JAVASCRIPT CAPABLE BROWSER."</noscript><script type="text/javascript" src="{{ url_for('static', filename='Cave/advent-min.js') }}"></script></body></html>
+

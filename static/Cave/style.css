@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "ModernDOS8x8";
+    src: url("ModernDOS8x8.ttf") format("truetype");
+}
+div{
+    font-family: ModernDOS8x8;
+    font-size: 25pt;
+    font-weight: normal;
+    line-height: 1.1;
+}

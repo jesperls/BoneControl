@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Skeleton Hub</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='seedrandom.js') }}"></script>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script src="{{ url_for('static', filename='weather.js') }}"></script>
+        <link rel="icon" href="{{ url_for('static', filename='Arkana/Tarot.png') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body onload="upStatus(), setImages(), hideNoAccess()">
+        <div id="mainContainer">
+            <div class="sideBanner">
+                <img class ="img" alt="image">
+            </div>
+            <div id="ButtonContainer">
+                <div id="header">
+                    <h1 id="status">...</h1>
+                </div>
+                <div id="actions">
+                    <form id="1">
+                        <!-- Pure insanity in a box -->
+                        <div onclick="showMessageBox(['PC Control'], 
+                                                    true, 
+                                                    [showMessageBox, showMessageBox], 
+                                                    [
+                                                        [['Are You Sure?'], true, [submitForm], [['1']], ['YES', 'NO'], false, false, true], 
+                                                        [['Are You Sure?'], true, [submitForm], [['2']], ['YES', 'NO'], false, false, true]
+                                                    ], 
+                                                    ['Start PC', 'Stop PC'])"> PC Control </div>
+                    </form>
+                    <form id="3">
+                        <div onclick="showMessageBox(
+                            message = ['Light Control'], 
+                            buttons = true, 
+                            func = [submitForm, submitForm, submitForm, submitColorForm], 
+                            funcvals = [
+                                ['3', 'LightON'], 
+                                ['3', 'LightOFF'], 
+                                ['3', 'LightBlink'], 
+                                ['3', 'LightRGB']
+                            ], 
+                            buttonsText = ['ON', 'OFF', 'TOGGLE', 'CHANGE COLOR', 'CLOSE'], 
+                            input = true, 
+                            frame = false,
+                            hideAfter = false,
+                            inputType = 'color',
+                        )"> Lights </div>
+                    </form>
+                    <form id="6">
+                        <div onclick="magic8Ball()"> Bone Oracle </div>
+                    </form>
+                    <form id="7">
+                        <div onclick="skeletonHumor()"> Calcium Dense Jokes </div>
+                    </form>
+                    <form id="8">
+                        <div onclick="boneSearch()"> Spot the bone </div>
+                    </form>
+                    <form id="9">
+                        <div onclick="showMessageBox(['Message'], true, [sendMessage], null, ['Send', 'Cancel'], true, false, true)"> Skeletal whispering </div>
+                    </form>
+                    <form id="10">
+                        <div onclick="showMessageBox(null, true, null, null, ['Close'], false, 'cave')"> Cave Adventure </div>
+                    </form>
+                    <form id="11">
+                        <div onclick="showMessageBox(null, true, null, null, ['Close'], false, 'chat')"> Bone-to-Bone </div>
+                    </form>
+                    <form id="12">
+                        <div onclick="getWeather(56.150154, 15.447809)"> Bones-Cast Weather  </div>
+                    </form>
+                    <form id="13">
+                        <div onclick="showMessageBox(['Insert Skeleton Key'], true, [setSkeletonKey], null, ['Inscribe', 'Cancel'], true)"> Skeleton Key </div>
+                    </form>
+                </div>
+                <div id = "downBox">
+                    <img class ="simg" alt="image" style="height: 150pt;">
+                    <img src="{{ url_for('static', filename='Arkana/Tarot.png') }}" alt="image" style="height: 250pt;">
+                    <img class ="simg" alt="image" style="height: 150pt;">
+                </div>
+                <div id="newHand">
+                    <form>
+                        <div onclick="eraseCookie('seed'), setTarot(), showMessageBox(['The Fates Are Changing'])"> Deal A New Hand </div>
+                    </form>
+                </div>
+            </div>
+            <div class="sideBanner">
+                <img class ="img" alt="image" style="margin-left:auto">
+            </div>
+        </div>
+        <div id="tarotCards">
+            <div class="tarotBox">
+                <img class ="tarot" alt="image">
+                <div class="tarotText"></div>
+            </div>
+            <div class="tarotBox">
+                <img class ="tarot" alt="image">
+                <div class="tarotText"></div>
+            </div>
+            <div class="tarotBox">
+                <img class ="tarot" alt="image">
+                <div class="tarotText"></div>
+            </div>
+        </div>
+        <div class="messageBox">
+            <div id="messageTextBox"></div>
+            <input id="messageInput" type="text"></input>
+            <iframe id="caveFrame"></iframe>
+            <div id="messageButtonContainer">
+                <div class="messageButton">YES</div>
+                <div class="messageButton">NO</div>
+            </div>
+        </div>
+    </body>
+</html>
