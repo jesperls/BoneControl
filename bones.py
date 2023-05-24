@@ -95,6 +95,7 @@ def access():
                 noaccess = noaccess + semi_restricted_actions
         response = make_response(jsonify({'access': noaccess}), 200)
     response.mimetype = "application/json"
+    print(noaccess)
     return response
 
 # Try to connect to a socket just to check if the server is running
@@ -126,7 +127,6 @@ def sendSocket(data):
         except:
             return False
 
-
 @app.route('/cave', methods=['GET'])
 def zork():
     return render_template('cave.html')
@@ -136,10 +136,8 @@ def getchat():
     if request.method == 'POST':
         # A json file with [user, message] is sent from the client
         request_json = request.get_json()
-        print(request_json)
         user = request_json['user']
         msg = request_json['message']
-        print(user, msg)
         if msg != "":
             with open('chatlog.txt', 'a') as f:
                 if user == "":
@@ -158,6 +156,10 @@ def getchat():
 @app.route('/chat', methods=['GET'])
 def chat():
     # Get the 10 latest messages from chatlog.txt
+    # first check if the file exists, create it if it doesn't
+    if not os.path.isfile('chatlog.txt'):
+        with open('chatlog.txt', 'w') as f:
+            f.write("Start of history\n")
     with open('chatlog.txt', 'r') as f:
         lines = f.readlines()
         lines = lines[-10:]
